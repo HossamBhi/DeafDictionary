@@ -2,12 +2,12 @@ import React from 'react';
 import {useTheme} from 'react-native-paper';
 import useRFontValue from '../../hooks/useRFontValue';
 import {Feather} from '@expo/vector-icons';
-import {StyleProp} from 'react-native';
+import {StyleProp, ViewStyle} from 'react-native';
 
 interface CustomeIconProps {
   Tag?: any;
   name?: string;
-  style?: StyleProp<any>;
+  style?: StyleProp<ViewStyle>;
   size?: number;
   color?: string;
 }

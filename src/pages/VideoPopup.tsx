@@ -1,7 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {ResizeMode, Video} from 'expo-av';
-import {AntDesign} from '@expo/vector-icons';
 import {handleTextToVideo} from '../utils/APIs';
 import AppLoader from '../components/common/AppLoader';
 import PageHeader from '../components/pageHeader';
@@ -12,13 +11,13 @@ interface VideoPlayerProps {
   route: any;
 }
 
-const VideoPopup = ({navigation, route}: VideoPlayerProps) => {
+const VideoPopup = ({route}: VideoPlayerProps) => {
   const video = useRef(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [videos, setVideos] = useState(route.params.videos);
   const [videoURL, setVideoURL] = useState('');
   const [videoIndex, setVideoIndex] = useState(0);
-
+  // console.log(videos);
   useEffect(() => {
     if (!Array.isArray(videos)) {
       handleTextToVideo(videos).then(result => setVideos(result || []));
@@ -59,25 +58,14 @@ const VideoPopup = ({navigation, route}: VideoPlayerProps) => {
       setErrorMessage('تأكد من الاتصال بالانترنت');
     }
   };
-  console.log({videos, videoURL});
+  // console.log({videos, videoURL});
   return (
     <View style={{flex: 1}}>
-      {/* <View style={styles.header}>
-        <AntDesign
-          name="close"
-          size={24}
-          color={'#fff'}
-          onPress={() => navigation.goBack()}
-        />
-      </View> */}
       <PageHeader showBack />
-      {/* <CustomeText style={{textAlign: 'center'}}>
-        {route.params.videos}
-      </CustomeText> */}
       <View style={{flex: 1, justifyContent: 'center'}}>
         {/* For render error msg */}
         {errorMessage.length > 1 ? (
-          <Text style={styles.errorMsg}>{errorMessage}</Text>
+          <CustomeText style={styles.errorMsg}>{errorMessage}</CustomeText>
         ) : videoURL.length < 1 ? (
           <AppLoader />
         ) : (

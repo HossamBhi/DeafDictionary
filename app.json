@@ -1,4 +1,39 @@
 {
   "name": "deafDictionary",
-  "displayName": "deafDictionary"
+  "expo": {
+    "name": "deafDictionary",
+    "slug": "deaf-dictionary",
+    "scheme": "deaf-dictionary",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "version": "1.0.0",
+    "owner": "kcg",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app need a permission to access."
+        }
+      ]
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "versionCode": 1,
+      "useNextNotificationsApi": true,
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED"
+      ]
+    },
+    "ios": {
+      "supportsTablet": true,
+      "buildNumber": "1.0.0",
+      "usesIcloudStorage": true
+    }
+  }
 }

@@ -1,21 +1,31 @@
 import {t} from 'i18next';
 import React, {useState, useCallback} from 'react';
-import {View, StyleSheet, ImageBackground, Share, Alert} from 'react-native';
-import ListItem from '../components/common/ListItem';
+import {
+  View,
+  StyleSheet,
+  ImageBackground,
+  Share,
+  I18nManager,
+} from 'react-native';
 import {
   Entypo,
   FontAwesome,
   MaterialCommunityIcons,
   Ionicons,
 } from '@expo/vector-icons';
+// import * as Updates from 'expo-updates';
+import i18n from 'i18next';
 import {useNavigation} from '@react-navigation/native';
+import {useTheme} from 'react-native-paper';
+import {CustomizePicker} from 'react-native-single-multi-select-fully-customized';
+import {useDispatch, useSelector} from 'react-redux';
+import RNRestart from 'react-native-restart';
+
+import ListItem from '../components/common/ListItem';
 import {isRTL} from '../langs';
 import CustomeImage from '../components/common/CustomeImage';
-import {useTheme} from 'react-native-paper';
 import CustomeIcon from '../components/common/CustomeIcon';
-import {CustomizePicker} from 'react-native-single-multi-select-fully-customized';
 import {ThemeProps, _getAppLanguages, _getAppThemes} from '../utils/appDB';
-import {useDispatch, useSelector} from 'react-redux';
 import {changeLanguageAction, changeThemeAction} from '../redux/appSettings';
 
 const LeftPart = ({color}: {color: string}) => (
@@ -55,9 +65,7 @@ const More = () => {
       } else if (result.action === Share.dismissedAction) {
         // dismissed
       }
-    } catch (error: any) {
-      Alert.alert(error.message);
-    }
+    } catch (error: any) {}
   };
   // change theme
   const handleChangeTheme = useCallback(
@@ -70,6 +78,16 @@ const More = () => {
   const handleChangeLanguage = useCallback(
     (item: ThemeProps) => {
       dispatch(changeLanguageAction(item));
+      i18n.changeLanguage(item.value).then(() => {
+        if (item.direction === 'rtl') {
+          I18nManager.forceRTL(true);
+        } else {
+          I18nManager.forceRTL(false);
+        }
+
+        // Updates.reloadAsync(); // Expo
+        RNRestart.Restart(); // native
+      });
     },
     [dispatch],
   );
@@ -93,11 +111,13 @@ const More = () => {
               style={styles.profileImage}
             />
           }
-          onPress={() => navigation.navigate('Profile' as never)}
+          onPress={() =>
+            navigation.navigate((logedUser ? 'Profile' : 'Login') as never)
+          }
           key={'Profile'}
           style={[styles.profile]}
           headerStyle={styles.profileHeader}
-          header={logedUser?.name || t('profile')}
+          header={logedUser?.name || logedUser?.email || t('profile')}
         />
       </ImageBackground>
       <ListItem

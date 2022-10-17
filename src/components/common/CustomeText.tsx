@@ -1,10 +1,10 @@
 import {useTheme} from '@react-navigation/native';
 import React from 'react';
-import {StyleProp, Text} from 'react-native';
+import {StyleProp, Text, TextStyle} from 'react-native';
 
 interface CustomeTextProps {
   children?: any;
-  style?: StyleProp<any>;
+  style?: StyleProp<TextStyle>;
   numberOfLines?: number;
 }
 const CustomeText = ({children, style, ...props}: CustomeTextProps) => {

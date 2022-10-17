@@ -1,5 +1,33 @@
 export default {
   translation: {
+    // login module
+    welcome: 'WELCOME',
+    validationPasswordError:
+      'Your password Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character',
+    passwordsMustMatch: 'Passwords must match',
+    signUp: 'Sign Up',
+    Name: 'Name',
+    email: 'Email',
+    Password: 'Password',
+    repeatPassword: 'Repeat Password',
+    rememberMe: 'Remember me',
+    signSocial: 'Sign up with social account',
+    loginSocial: 'login with social account',
+    byTabbing: "By tapping 'Sign Up' you agree to the",
+    termsAndConfitions: 'terms & conditions',
+    loginErrorMsg:
+      'The email address or password you entered is incorrect or the account does not exist',
+    forgotPassword: 'Forgot password?',
+    forgetYourPass: 'Forgot Your Password?',
+    forgetDes:
+      'Enter your email address and we will send you instructions to reset your password.',
+    continue: 'CONTINUE',
+    skip: 'Skip',
+    login: 'LOG IN',
+    dontHaveAnAccount: "Don't have an account?",
+    createNewAccount: 'Create new account',
+    pickCountry: 'Pick Country',
+    // end login module
     theme: 'Theme',
     themes: 'Themes',
     defaultTheme: 'Default Theme',
@@ -27,6 +55,11 @@ export default {
     // phrases
     phrases: 'Phrases',
     writePhrase: 'Write Phrase...',
+    selectWord: 'Select word',
+    play: 'Play',
+    pause: 'Pause',
+    stop: 'Stop',
+    cancel: 'Cancel',
     // Numbers
     numbers: 'Numbers',
     writeNumber: 'Write Number...',
@@ -34,7 +67,6 @@ export default {
     profileName: 'Profile Name',
     phone: 'Phone / Mobile',
     age: 'Age',
-    email: 'Email',
     job: 'Job',
     enterprise: 'Profession / Enterprise',
     country: 'Country',

@@ -40,3 +40,13 @@ export interface WordProps {
   wordimgs: string[];
   wordvids: string[];
 }
+
+export interface translatorVideoProps {
+  vpath: string;
+  txt: string;
+}
+
+export interface suggestionWordProps {
+  id: any;
+  word: string;
+}

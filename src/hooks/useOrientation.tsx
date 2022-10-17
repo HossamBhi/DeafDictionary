@@ -1,6 +1,6 @@
-import { useWindowDimensions } from "react-native";
+import {useWindowDimensions} from 'react-native';
 
-export default useOrientation = () => {
+export const useOrientation = () => {
   const windowInfo = useWindowDimensions();
   return {
     ...windowInfo,

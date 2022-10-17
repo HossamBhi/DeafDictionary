@@ -1,10 +1,10 @@
 import React from 'react';
-import {Image, StyleProp, TouchableOpacity} from 'react-native';
+import {Image, StyleProp, TouchableOpacity, ImageStyle} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 interface CustomeImageProps {
   source?: any;
-  style?: StyleProp<any>;
+  style?: StyleProp<ImageStyle>;
   resizeMode?: string | any;
   isOpenImage?: boolean;
 }

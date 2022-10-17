@@ -3,7 +3,45 @@ import {API_URL} from '../config';
 
 const headers = {Accept: 'application/json', lang: 'en'};
 
-// Authenication
+// start login module
+export const postLoginSocialMediaAPI = async data =>
+  await axios
+    .post(`${API_URL}auth/social-login`, data)
+    .then(res => res.data)
+    .catch(onCatchError);
+
+export const postRegisterAPI = async data =>
+  await axios
+    .post(`${API_URL}auth/register`, data)
+    .then(res => res.data)
+    .catch(onCatchError);
+
+export const postLoginAPI = async ({email, password}) => {
+  const data = new FormData();
+  data.append('email', email);
+  data.append('password', password);
+  return await axios({
+    url: `${API_URL}auth/login`,
+    headers,
+    method: 'post',
+    data: data,
+  })
+    .then(res => res.data)
+    .catch(onCatchError);
+};
+
+export const getCountriesAPI = async () =>
+  await axios({url: `${API_URL}countries`, headers})
+    .then(res => res.data)
+    .catch(onCatchError);
+
+export const postForgetPasswordAPI = async ({email}) =>
+  await axios
+    .post(`${API_URL}auth/forgot-password`, {email})
+    .then(res => res.data)
+    .catch(onCatchError);
+// end login module
+
 export const getContactUsAPI = async () =>
   await axios({url: `${API_URL}pages/contact`, headers, method: 'get'})
     .then(res => res.data)
@@ -36,7 +74,7 @@ const onCatchError = (error: any) => {
     console.log('error.response: ', error.response);
     switch (status) {
       case 404:
-        return {error: 'حدث خطأ اثناء الاتصال بالخادم ' + status};
+        return {error: 'API Error' + status};
       case 401:
         return {error: 'Unauthorized ' + status};
       case 403:
@@ -45,11 +83,11 @@ const onCatchError = (error: any) => {
       case 429:
         return {error: data.message, status};
       default:
-        return {error: 'حدث خطأ اثناء الاتصال بالخادم ' + status};
+        return {error: 'API Error' + status};
     }
   } else if (error.request) {
     console.log('error.request: ', error.request);
     return {error: 'Make sure about internet'};
   }
-  return {error: 'خطأ في الارسال'};
+  return {error: 'Internet Error.'};
 };

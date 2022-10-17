@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {Pressable, StyleProp, ViewStyle, TextStyle} from 'react-native';
+import {StyleProp, TouchableOpacity, TextStyle, ViewStyle} from 'react-native';
 import CustomeText from './CustomeText';
 
 export interface CustomeButtonProps {
@@ -21,7 +21,7 @@ export default ({
   icon,
   children,
 }: CustomeButtonProps) => (
-  <Pressable
+  <TouchableOpacity
     style={[style, disabled && {backgroundColor: '#dddddd'}]}
     onPress={onPress}
     disabled={disabled ? true : false}>
@@ -32,5 +32,5 @@ export default ({
     )}
     {icon && icon}
     {children && children}
-  </Pressable>
+  </TouchableOpacity>
 );

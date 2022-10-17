@@ -1,6 +1,13 @@
 import {t} from 'i18next';
 import React from 'react';
-import {StyleProp, StyleSheet, TextInput, View} from 'react-native';
+import {
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+  StyleSheet,
+  TextInput,
+  View,
+} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import CustomeText from './CustomeText';
 
@@ -36,8 +43,8 @@ interface TextInputProps {
   placeholder?: string;
   value?: any;
   onChangeText?: any;
-  containerStyle?: StyleProp<any>;
-  titleStyle?: StyleProp<any>;
+  containerStyle?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<TextStyle>;
   inputStyle?: StyleProp<any>;
   [key: string]: any;
 }

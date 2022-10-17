@@ -1,13 +1,20 @@
 import {t} from 'i18next';
 import React from 'react';
-import {StyleProp, StyleSheet, TextInput, View} from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TextInput,
+  View,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import CustomeText from './CustomeText';
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 14,
-    paddingHorizontal: 20,
+    paddingVertical: 4,
+    paddingHorizontal: 12,
     borderRadius: 4,
     marginBottom: 20,
     // shadow
@@ -22,12 +29,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 11,
-    lineHeight: 11,
     color: '#9B9B9B',
+    paddingTop: 6,
   },
   input: {
     fontSize: 14,
-    lineHeight: 21,
+    paddingVertical: 0,
   },
 });
 
@@ -36,9 +43,9 @@ interface TextInputProps {
   placeholder?: string;
   value?: any;
   onChangeText?: any;
-  containerStyle?: StyleProp<any>;
-  titleStyle?: StyleProp<any>;
-  inputStyle?: StyleProp<any>;
+  containerStyle?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<TextStyle>;
+  inputStyle?: StyleProp<ViewStyle>;
   [key: string]: any;
 }
 

@@ -10,14 +10,21 @@ import Letters from '../pages/Letters';
 import AnimatedTabs from './AnimatedTabs';
 import Profile from '../pages/Profile';
 import ImagesViewer from '../pages/ImagesViewer';
+import Login from '../pages/loginModule/Login';
+import Register from '../pages/loginModule/Register';
+import ResetPass from '../pages/loginModule/ResetPass';
 
 const Stack = createStackNavigator();
 
 export const MainStack = () => (
   <Stack.Navigator
     screenOptions={{headerShown: false}}
-    // initialRouteName="RatingAndReviews"
-  >
+    initialRouteName="Login">
+    <Stack.Group>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="ResetPass" component={ResetPass} />
+    </Stack.Group>
     <Stack.Group>
       <Stack.Screen name="TabNavigator" component={AnimatedTabs} />
       <Stack.Screen name="Letters" component={Letters} />

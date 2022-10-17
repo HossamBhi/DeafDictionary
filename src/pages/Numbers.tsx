@@ -64,7 +64,7 @@ const Numbers = () => {
     [navigation, colors],
   );
   return (
-    <View>
+    <View style={{flex: 1}}>
       <SearchBar {...{searchValue, setSearchValue}} />
       <FlatList
         style={{paddingHorizontal: 20}}
@@ -72,6 +72,7 @@ const Numbers = () => {
         data={arabic_alpha}
         renderItem={renderLetter}
         numColumns={4}
+        ListFooterComponent={<View style={{height: 100}} />}
       />
     </View>
   );

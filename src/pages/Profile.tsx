@@ -20,11 +20,11 @@ const Profile: FC<ProfileProps> = ({navigation}) => {
   const {logedUser = {}} = useSelector((state: any) => state.user);
   const dispatch = useDispatch();
   const [image, setImage] = useState<MediaLibraryPermissionResponse | any>();
-
+  console.log({logedUser});
   const [name, setName] = useState(logedUser?.name || '');
-  const [phone, setPhone] = useState(logedUser.phone || '');
+  const [phone, setPhone] = useState(logedUser?.phone || '');
   const [age, setAge] = useState(logedUser?.age || '');
-  const [email, setEmail] = useState(logedUser.email || '');
+  const [email, setEmail] = useState(logedUser?.email || '');
   const [job, setJob] = useState(logedUser?.job || '');
   const [enterprise, setEnterprise] = useState(logedUser?.enterprise || '');
   const [country, setCountry] = useState(logedUser?.country || '');
@@ -89,13 +89,19 @@ const Profile: FC<ProfileProps> = ({navigation}) => {
           style={{flex: 1, paddingHorizontal: 16}}>
           <ProfileImage
             handlePickImage={handlePickImage}
-            personImage={image || logedUser.image}
+            personImage={image || logedUser?.image}
+          />
+          <TextInputWithHeader
+            title={t('email')}
+            value={email}
+            onChangeText={setEmail}
           />
           <TextInputWithHeader
             title={t('profileName')}
             value={name}
             onChangeText={setName}
           />
+
           <TextInputWithHeader
             title={t('phone')}
             value={phone}
@@ -106,11 +112,7 @@ const Profile: FC<ProfileProps> = ({navigation}) => {
             value={age}
             onChangeText={setAge}
           />
-          <TextInputWithHeader
-            title={t('email')}
-            value={email}
-            onChangeText={setEmail}
-          />
+
           <TextInputWithHeader
             title={t('job')}
             value={job}

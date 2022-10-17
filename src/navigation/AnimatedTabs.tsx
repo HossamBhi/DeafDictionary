@@ -33,8 +33,8 @@ const TabArr = [
     route: 'Phrases',
     label: 'Phrases',
     type: MaterialCommunityIcons,
-    activeIcon: 'timeline-plus',
-    inActiveIcon: 'timeline-plus-outline',
+    activeIcon: 'timeline-text',
+    inActiveIcon: 'timeline-text-outline',
     component: Phrases,
   },
   {
@@ -64,11 +64,12 @@ const TabArr = [
 
 const Tab = createBottomTabNavigator();
 
-const TabButton = props => {
+const TabButton = (props: any) => {
   const {item, onPress, accessibilityState} = props;
   const focused = accessibilityState.selected;
-  const viewRef = useRef(null);
-  const {colors} = useTheme();
+  const viewRef = useRef<any>(null);
+  const {colors}: any = useTheme();
+
   useEffect(() => {
     if (focused) {
       viewRef?.current?.animate({

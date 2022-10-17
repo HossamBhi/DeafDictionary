@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Pressable, StyleProp} from 'react-native';
+import {Pressable, StyleProp, ViewStyle, TextStyle} from 'react-native';
 import {Checkbox, useTheme} from 'react-native-paper';
 import CustomeText from './CustomeText';
 
@@ -8,8 +8,8 @@ interface CheckboxWithTextProps {
   checked?: boolean;
   setChecked: (x?: any) => void;
   checkColor?: any;
-  TStyle?: StyleProp<any>;
-  style?: StyleProp<any>;
+  TStyle?: StyleProp<TextStyle>;
+  style?: StyleProp<ViewStyle>;
   uncheckedColor?: any;
 }
 const CheckboxWithText: FC<CheckboxWithTextProps> = ({

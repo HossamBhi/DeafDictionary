@@ -92,7 +92,7 @@ const Letters = () => {
     [navigation, colors],
   );
   return (
-    <View>
+    <View style={{flex: 1}}>
       <PageHeader text={t('letters')} />
       <LangBtns {...{isArabic, setIsArabic}} />
       <FlatList
@@ -100,6 +100,7 @@ const Letters = () => {
         data={isArabic ? arabic_alpha : english_alpha}
         renderItem={renderLetter}
         numColumns={4}
+        ListFooterComponent={<View style={{height: 100}} />}
       />
     </View>
   );

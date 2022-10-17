@@ -1,17 +1,10 @@
 import {useEffect, useState} from 'react';
 import {Platform, StatusBar, useWindowDimensions} from 'react-native';
 
-interface useResponsiveFontProps {
-  value?: number;
-  standardScreenHeight?: number;
-}
 // take percentage
-const useRFontValue = (
-  value = 14,
-  standardScreenHeight = 800,
-): useResponsiveFontProps => {
+const useRFontValue = (value = 14, standardScreenHeight = 800) => {
   const {width, height} = useWindowDimensions();
-  const [font, setFont] = useState(value);
+  const [font, setFont] = useState<number>(value);
   useEffect(() => {
     const standardLength = width > height ? width : height;
     const offset =
@@ -25,7 +18,7 @@ const useRFontValue = (
       Platform.OS === 'android' ? standardLength - offset : standardLength;
 
     setFont((value * deviceHeight) / standardScreenHeight);
-  }, [width]);
+  }, [width, standardScreenHeight, height, value]);
   // console.log("values: ", { width, height, font, value });
 
   return Math.round(font);

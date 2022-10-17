@@ -28,6 +28,8 @@ interface PageHeaderProps {
   resultNum?: number;
   originNum?: number;
   signVideoOnPress?: () => void;
+  onSearchFocus?: () => void;
+  onSearchBlur?: () => void;
 }
 
 export default ({
@@ -41,6 +43,8 @@ export default ({
   resultNum,
   originNum,
   signVideoOnPress,
+  onSearchFocus,
+  onSearchBlur,
 }: PageHeaderProps) => {
   const navigation = useNavigation();
   const {colors}: any = useTheme();
@@ -59,8 +63,10 @@ export default ({
         containerStyle={{flex: 1, paddingHorizontal: 10, borderRadius: 0}}
         onChangeText={setSearchValue}
         value={searchValue}
+        onFocus={onSearchFocus}
+        onBlur={onSearchBlur}
       />
-      {originNum && (
+      {originNum !== undefined && (
         <CustomeText
           style={[styles.numBranches, {backgroundColor: colors.background}]}>
           {resultNum} / {originNum}
